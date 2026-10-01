@@ -1,0 +1,377 @@
+<title>Jacquelyn Little — Data Analytics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F6F8;
+    --surface:#FFFFFF;
+    --border:#DCE1E7;
+    --text:#1B2430;
+    --text-muted:#5B6572;
+    --accent:#2F5D9C;
+    --accent-soft:#E8EFF8;
+    --risk:#C97A2B;
+    --risk-soft:#F7EBDD;
+    --code-bg:#101826;
+    --code-text:#D7E1EE;
+    color-scheme: light;
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --bg:#12161C;
+      --surface:#181D26;
+      --border:#2B323D;
+      --text:#E7EAEE;
+      --text-muted:#9AA4B2;
+      --accent:#6C9AD6;
+      --accent-soft:#1D2A3D;
+      --risk:#E0A05E;
+      --risk-soft:#2E2416;
+      --code-bg:#0B0F16;
+      --code-text:#D7E1EE;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12161C;
+    --surface:#181D26;
+    --border:#2B323D;
+    --text:#E7EAEE;
+    --text-muted:#9AA4B2;
+    --accent:#6C9AD6;
+    --accent-soft:#1D2A3D;
+    --risk:#E0A05E;
+    --risk-soft:#2E2416;
+    --code-bg:#0B0F16;
+    --code-text:#D7E1EE;
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    padding-inline:20px;
+  }
+  .wrap{max-width:920px; margin:0 auto;}
+
+  h1,h2,h3{font-family:'Fraunces', Georgia, serif; text-wrap:balance; margin:0;}
+  .num{font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums;}
+
+  header.hero{
+    padding-block: 56px 40px;
+    border-bottom:1px solid var(--border);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:14px;
+  }
+  h1{font-size:clamp(2rem, 5vw, 3rem); font-weight:600; line-height:1.1;}
+  .subtitle{
+    margin-top:14px;
+    max-width:60ch;
+    color:var(--text-muted);
+    font-size:1.05rem;
+    line-height:1.6;
+  }
+  .contact-row{
+    margin-top:22px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 20px;
+    font-size:0.92rem;
+    color:var(--text-muted);
+  }
+  .contact-row a{color:var(--text); text-decoration:none; border-bottom:1px solid var(--border);}
+  .contact-row a:hover{border-color:var(--accent); color:var(--accent);}
+
+  section{padding-block:44px; border-bottom:1px solid var(--border);}
+  section:last-of-type{border-bottom:none;}
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-muted);
+    margin-bottom:16px;
+  }
+
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:18px;
+    margin-top:20px;
+  }
+  .skill-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:18px 20px;
+  }
+  .skill-card h3{font-size:0.98rem; font-family:'IBM Plex Sans'; font-weight:600; margin-bottom:8px;}
+  .skill-card p{margin:0; color:var(--text-muted); font-size:0.9rem; line-height:1.55;}
+  .tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    padding:2px 8px;
+    border-radius:5px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    margin:2px 4px 0 0;
+  }
+
+  .project{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:28px;
+    margin-top:22px;
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:28px;
+    align-items:center;
+  }
+  @media (max-width:680px){ .project{grid-template-columns:1fr;} }
+  .project h3{font-size:1.3rem; margin-bottom:10px;}
+  .project p{color:var(--text-muted); line-height:1.6; font-size:0.95rem;}
+  .project .meta{
+    margin-top:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--text-muted);
+    word-break:break-all;
+  }
+  .findings{margin:14px 0 0; padding-left:18px; color:var(--text-muted); font-size:0.9rem; line-height:1.7;}
+  .findings li{margin-bottom:4px;}
+
+  .chart-box{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:16px;
+  }
+  .chart-title{font-size:0.78rem; color:var(--text-muted); margin-bottom:10px; font-family:'IBM Plex Mono', monospace;}
+  svg text{fill:var(--text-muted); font-family:'IBM Plex Mono', monospace; font-size:9px;}
+  svg .bar-label{fill:var(--text); font-size:9.5px;}
+
+  .practice-box{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:28px;
+    margin-top:20px;
+  }
+  .tier-row{
+    display:grid;
+    grid-template-columns: 90px 1fr;
+    gap:14px;
+    padding:10px 0;
+    border-top:1px solid var(--border);
+    font-size:0.92rem;
+  }
+  .tier-row:first-of-type{border-top:none;}
+  .tier-num{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--accent);
+    font-weight:600;
+  }
+  .tier-row span.desc{color:var(--text-muted);}
+
+  footer{padding-block:36px 60px; color:var(--text-muted); font-size:0.85rem;}
+  footer a{color:var(--accent); text-decoration:none;}
+
+  code, .inline-code{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85em;
+    background:var(--code-bg);
+    color:var(--code-text);
+    padding:1px 6px;
+    border-radius:4px;
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Data Analytics Portfolio</div>
+    <h1>Jacquelyn Little</h1>
+    <p class="subtitle">
+      Pricing, rebate, and receivables analyst turning eight years of
+      normalizing messy financial data into SQL and Python work — built
+      around the kind of portfolio-health monitoring a risk & analytics
+      team runs every day.
+    </p>
+    <div class="contact-row">
+      <span>Akron, OH</span>
+      <a href="mailto:little.jacquelyn2@gmail.com">little.jacquelyn2@gmail.com</a>
+      <a href="https://github.com/littlejacquelyn2-blip/data-analytics-portfolio">github.com/littlejacquelyn2-blip/data-analytics-portfolio</a>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>SQL</h3>
+        <p>Self-taught; comfortable with joins, CTEs, and window functions
+          (RANK, LAG, NTILE, running and rolling aggregates) — see the
+          queries in both projects below.</p>
+        <div><span class="tag">CTEs</span><span class="tag">window fns</span><span class="tag">SQLite</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>Python</h3>
+        <p>Building fluency in pandas — groupby, merge, pivot tables,
+          apply/transform — plus matplotlib for the charts in each
+          project.</p>
+        <div><span class="tag">pandas</span><span class="tag">matplotlib</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>Domain</h3>
+        <p>Pricing and margin analytics, rebate and accrual analysis,
+          invoice auditing, internal controls — eight years of finding the
+          discrepancy in a large, messy dataset.</p>
+        <div><span class="tag">risk</span><span class="tag">audit</span><span class="tag">forecasting</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Projects</div>
+
+    <div class="project">
+      <div>
+        <h3>Lending Risk Analysis</h3>
+        <p>25,000-loan book modeled on the public LendingClub schema.
+          Measures default rate by grade, vintage, purpose, and DTI —
+          the exact shape of analysis a consumer-lending risk team runs
+          to monitor portfolio health.</p>
+        <ul class="findings">
+          <li>Default rate climbs from 8% (grade A) to 53% (grade G)</li>
+          <li>2020-issued loans default higher across every grade — a
+            vintage effect, not a grading failure</li>
+          <li>Default rate rises sharply past 30% DTI</li>
+        </ul>
+        <div class="meta">01-lending-risk-analysis/ · SQL + Python · SQLite</div>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">Default rate by grade (%)</div>
+        <svg viewBox="0 0 260 170" width="100%">
+          <!-- bars: A 8.28 B 11.42 C 18.63 D 28.46 E 37.97 F 44.76 G 53.29, max ~55 -->
+          <g font-family="IBM Plex Mono">
+            <!-- axis -->
+            <line x1="30" y1="10" x2="30" y2="140" stroke="var(--border)"/>
+            <line x1="30" y1="140" x2="250" y2="140" stroke="var(--border)"/>
+            <!-- bars: width per bar ~28, gap 3, 7 bars starting x=36 -->
+            <!-- scale: 140-10=130px for 55 -> 2.36px per unit -->
+            <g fill="var(--accent)">
+              <rect x="36"  y="119.5" width="24" height="20.5"/>
+              <rect x="64"  y="113.1" width="24" height="26.9"/>
+              <rect x="92"  y="95.9"  width="24" height="44.1"/>
+              <rect x="120" y="72.8"  width="24" height="67.2"/>
+              <rect x="148" y="50.4"  width="24" height="89.6"/>
+              <rect x="176" y="34.4"  width="24" height="105.6"/>
+              <rect x="204" y="14.3"  width="24" height="125.7"/>
+            </g>
+            <g class="bar-label" text-anchor="middle">
+              <text x="48" y="113">8%</text>
+              <text x="76" y="107">11%</text>
+              <text x="104" y="90">19%</text>
+              <text x="132" y="67">28%</text>
+              <text x="160" y="44">38%</text>
+              <text x="188" y="28">45%</text>
+              <text x="216" y="9">53%</text>
+            </g>
+            <g text-anchor="middle">
+              <text x="48" y="155">A</text>
+              <text x="76" y="155">B</text>
+              <text x="104" y="155">C</text>
+              <text x="132" y="155">D</text>
+              <text x="160" y="155">E</text>
+              <text x="188" y="155">F</text>
+              <text x="216" y="155">G</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="project">
+      <div>
+        <h3>Rental Portfolio Analytics</h3>
+        <p>Cash-flow, occupancy, and expense tracking for a 4-unit rental
+          portfolio — sample data standing in for the real books, same
+          schema you'd use with actual numbers.</p>
+        <ul class="findings">
+          <li>Net cash flow varies meaningfully by unit before financing costs</li>
+          <li>A single vacancy month has an outsized effect on annual return</li>
+          <li>Property tax and insurance dominate the expense mix; repairs are the most variable line</li>
+        </ul>
+        <div class="meta">02-rental-portfolio-analytics/ · SQL + Python · SQLite</div>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">Net cash flow by unit ($, 2024–25)</div>
+        <svg viewBox="0 0 260 170" width="100%">
+          <!-- Unit B 25836 C 20512 D 17041 A 12617, max ~27000 -->
+          <g font-family="IBM Plex Mono">
+            <line x1="30" y1="10" x2="30" y2="140" stroke="var(--border)"/>
+            <line x1="30" y1="140" x2="250" y2="140" stroke="var(--border)"/>
+            <g fill="var(--risk)">
+              <rect x="46"  y="17.5"  width="40" height="122.5"/>
+              <rect x="106" y="42.3"  width="40" height="97.7"/>
+              <rect x="166" y="59.5"  width="40" height="80.5"/>
+            </g>
+            <g class="bar-label" text-anchor="middle">
+              <text x="66" y="12">$25.8k</text>
+              <text x="126" y="37">$20.5k</text>
+              <text x="186" y="54">$17.0k</text>
+            </g>
+            <g text-anchor="middle">
+              <text x="66" y="155">B</text>
+              <text x="126" y="155">C</text>
+              <text x="186" y="155">D</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">SQL &amp; Python Practice</div>
+    <div class="practice-box">
+      <p style="margin:0 0 6px; color:var(--text-muted); font-size:0.95rem; line-height:1.6;">
+        A self-paced curriculum built on the same two datasets, ordered from
+        fundamentals to the CTE and window-function level tested in most
+        fintech and analyst technical screens.
+      </p>
+      <div class="tier-row">
+        <span class="tier-num">01</span>
+        <span class="desc">Beginner — SELECT/WHERE/ORDER BY, filtering, value_counts, basic aggregation</span>
+      </div>
+      <div class="tier-row">
+        <span class="tier-num">02</span>
+        <span class="desc">Intermediate — GROUP BY + HAVING, CASE/map, joins/merge, subqueries, pivot tables</span>
+      </div>
+      <div class="tier-row">
+        <span class="tier-num">03</span>
+        <span class="desc">Advanced — CTEs, RANK/LAG/NTILE, rolling averages, groupby + transform, row-wise apply</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Built with SQLite, pandas, and matplotlib. Code and full write-ups for
+    both projects live in the
+    <a href="https://github.com/littlejacquelyn2-blip/data-analytics-portfolio">GitHub repository</a>.
+  </footer>
+
+</div>
